@@ -1,5 +1,5 @@
 <h2>Posts</h2>
-<div class="container-xl">
+<div class="container-fluid">
 <table class="table table-striped table-image">
     <thead class="thead-dark">
         <tr>
@@ -38,7 +38,12 @@
                         <p><%= link_to "Delete ", "/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
                     <%end%>
                 </td>
-                <td><p><%= link_to "Comments", "/posts/#{posts.id}/comments" %></p></td>
+                <td><%if posts.comments.present? %>
+                        <p><%= link_to posts.comments.count, "/posts/#{posts.id}/comments", class: "bi bi-chat-right-dots-fill"%></p>
+                    <%else%>
+                        <p>No comments!</p>
+                    <%end%>
+                </td>
             <%end%>
         </tr>
         <%end%>

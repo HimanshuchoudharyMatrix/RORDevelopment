@@ -15,21 +15,12 @@
   </head>
 
   <body>
-   <%= render "/shared/header" %>
 
+    <%= render "/shared/header" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-
-   <script type="text/javascript">$(document).ready(function() {
-    if ($('cktext_area').length > 0) {
-        var data = $('cktext_area');
-        $.each(data, function(i) {
-            CKEDITOR.replace(data[i].id);
-        });
-      }
-    });</script>
-  
-  <%= render "/shared/footer"%>
+    <%= render "/shared/footer"%>
+    
   </body>
 </html>

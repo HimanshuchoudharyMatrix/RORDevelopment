@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
     #before_action :require_comment, only:[:show, :destroy, :edit, :update]
-    before_action :set_post, only:[:index, :create, :destroy]
+    before_action :set_post, only:[:index, :create, :destroy, :edit, :update]
     def index
         @comments = @post.comments.all
     end
@@ -16,6 +16,18 @@ class CommentsController < ApplicationController
         @comment.save
 
         redirect_to post_path(@post)
+    end
+
+    def edit
+        @comment = @post.comments.find(params[:id])
+    end
+    def update
+        @comment= Comment.find(params[:id])
+       if @comment.update(comment_params)
+            redirect_to  post_path(@post)
+        else
+            render 'edit'
+        end
     end
 
     def destroy
