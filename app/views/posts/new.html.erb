@@ -1,0 +1,32 @@
+<% if @post.errors.any?%>
+    <% @post.errors.full_messages.each do |msg| %>
+        <p style="color: red;"><%= msg %></p>
+    <% end %>
+<%end%><br>
+
+<%= form_for @post do |f| %>
+    
+    <div class="form">
+    <%= f.label :Title %>
+    <%= f.text_field :title %><br>
+    </div>
+    <div class="form">
+    <%= f.label :Description %>
+    <%= f.cktext_area :description %><br>
+    </div>
+    <div class="form">
+    <%= f.label :Image %>
+    <%= f.file_field :image %><br>
+    </div>
+    <div class="form">
+    <%= f.label :Published%>
+    <%= f.check_box :published %><br>
+    </div>
+    <div class="from">
+    <%= f.text_field :user_id, value: current_user.id, class:'d-none'%>
+    </div>
+    <div class="text">
+    <%= f.submit %>
+    </div>
+
+<% end %>

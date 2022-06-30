@@ -1,0 +1,24 @@
+{:uriI"Îfile:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/notifications.html?type=text/html&id=4c174277e30f1d99ed4a558f7d3d40948e672e37784c6fe22eb1b7ccd7ff3e0f:ET:load_pathI"[/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts;T:filenameI"ë/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/notifications.html;T:	nameI":ckeditor/plugins/exportpdf/tests/manual/notifications;T:logical_pathI"?ckeditor/plugins/exportpdf/tests/manual/notifications.html;T:content_typeI"text/html;T:sourceI"y<div id="editor1">
+	<p>Hello world!</p>
+</div>
+
+<div id="editor2">
+	<p>Hello world!</p>
+</div>
+
+<script>
+	exportPdfUtils.initManualTest();
+
+	CKEDITOR.replace( 'editor1', exportPdfUtils.getDefaultConfig( 'manual', {
+		extraPlugins: 'exportpdf'
+	} ) );
+
+	CKEDITOR.replace( 'editor2', exportPdfUtils.getDefaultConfig( 'manual', {
+		removePlugins: 'notification'
+	} ) );
+</script>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"üfile-digest:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/notifications.html;TTF:charsetI"
+utf-8;F:digest"%ÀˇQﬂçÀF∑˝}s["]¨¨B?3&:qß–wgDÉk:lengthiy:dependencies_digest"%⁄ÏUwÄ≈ê?Öa<âtï{«‡5ÜN„æFSÎˇä:idI"E4c174277e30f1d99ed4a558f7d3d40948e672e37784c6fe22eb1b7ccd7ff3e0f;F:
+mtimel+#@µb

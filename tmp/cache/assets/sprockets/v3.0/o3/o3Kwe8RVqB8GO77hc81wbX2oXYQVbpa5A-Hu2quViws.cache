@@ -1,0 +1,28 @@
+{:uriI"ëfile:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/tokenfetching.html?type=text/html&id=e3e0e0c865ee27780ae042d30847a21b46698d842e4ec37f5c25d871ba3a3341:ET:load_pathI"[/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts;T:filenameI"‘/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/tokenfetching.html;T:	nameI":ckeditor/plugins/exportpdf/tests/manual/tokenfetching;T:logical_pathI"?ckeditor/plugins/exportpdf/tests/manual/tokenfetching.html;T:content_typeI"text/html;T:sourceI"!<div id="editor">
+	<p>Foo bar</p>
+</div>
+
+<div id="tokenValue" style="word-break:break-all;border:1px solid red;"></div>
+
+<script>
+	exportPdfUtils.initManualTest();
+
+	var editor = CKEDITOR.replace( 'editor', exportPdfUtils.getDefaultConfig( 'manual' ) );
+
+	editor.on( 'instanceReady', function() {
+		if ( !CKEDITOR.config.exportPdf_tokenUrl ) {
+			bender.ignore();
+		}
+	} );
+
+	editor.on( 'exportPdf', function( evt ) {
+		var value = CKEDITOR.document.findOne( '#tokenValue' );
+
+		value.setHtml( evt.data.token );
+	}, null, null, 17 );
+</script>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"Ÿfile-digest:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/tokenfetching.html;TTF:charsetI"
+utf-8;F:digest"%ÌïE/úD›xhGªrVµ?êž˜ò:Fsø’å+ôóðÓ€:lengthi!:dependencies_digest"%qÃI™¦B—l§ß×¢)C<,ùÐÆ;ëDU{¶Ì:idI"Ee3e0e0c865ee27780ae042d30847a21b46698d842e4ec37f5c25d871ba3a3341;F:
+mtimel+#@µb

@@ -1,0 +1,45 @@
+{:uriI"Úfile:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/tokentwoeditorswrong.html?type=text/html&id=3fb87dbeb158258bf4700e63d49604f1e5c968df85f583307a0d8da4213b3d4d:ET:load_pathI"[/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts;T:filenameI"ò/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/tokentwoeditorswrong.html;T:	nameI"Ackeditor/plugins/exportpdf/tests/manual/tokentwoeditorswrong;T:logical_pathI"Fckeditor/plugins/exportpdf/tests/manual/tokentwoeditorswrong.html;T:content_typeI"text/html;T:sourceI"<h3>Editor 1</h3>
+<div id="editor1">
+	<p>Foo bar</p>
+</div>
+<div id="tokenValue1" style="word-break:break-all;border:1px solid red;"></div>
+
+<h3>Editor 2</h3>
+<div id="editor2">
+	<p>Foo bar</p>
+</div>
+<div id="tokenValue2" style="word-break:break-all;border:1px solid red;"></div>
+
+<script>
+	exportPdfUtils.initManualTest();
+
+	var editor1 = CKEDITOR.replace( 'editor1', exportPdfUtils.getDefaultConfig( 'manual', { height: 100 } ) ),
+		editor2 = CKEDITOR.replace( 'editor2', exportPdfUtils.getDefaultConfig( 'manual', { exportPdf_tokenUrl: '', height: 100 } ) );
+
+	editor1.on( 'instanceReady', function() {
+		if ( !CKEDITOR.config.exportPdf_tokenUrl ) {
+			bender.ignore();
+		}
+	} );
+
+	editor1.on( 'exportPdf', function( evt ) {
+		var value = CKEDITOR.document.findOne( '#tokenValue1' );
+
+		value.setHtml( evt.data.token );
+		evt.cancel();
+	}, null, null, 17 );
+
+	editor2.on( 'exportPdf', function( evt ) {
+		var value = CKEDITOR.document.findOne( '#tokenValue2' );
+
+		value.setHtml( evt.data.token );
+		evt.cancel();
+	}, null, null, 17 );
+</script>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"¶file-digest:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/tokentwoeditorswrong.html;TTF:charsetI"
+utf-8;F:digest"%«˜.ß¯êYn
+f5æx
+‘ÏóîÛ»ÈM'h/áV´a:lengthi:dependencies_digest"%Q”œπMÀ<ˇ≠T4·±;é&K—¢F`ò+œ§:idI"E3fb87dbeb158258bf4700e63d49604f1e5c968df85f583307a0d8da4213b3d4d;F:
+mtimel+#@µb

@@ -1,0 +1,45 @@
+<h2>Post</h2>
+        <table class="table table-striped table-image">
+           <thead class="thead-dark">
+               <tr>
+                   <th scope="col">Post Id</th>
+                   <th scope="col">User Name</th>
+                   <th scope="col">Title</th>
+                   <th scope="col">Image</th>
+                   <th scope="col">Description</th>
+                   <th scope="col">Published</th>
+               </tr>
+           </thead>
+           <tbody>
+                <tr>
+                   <td><%= @post.id %></th>
+                   <td> <%= @post.user.name %></td>
+                   <td><%= @post.title %></td>
+                   <td><% if @post.image.exists? %>
+                            <%=  image_tag(@post.image.url, width: "150", height: "150")%>
+                        <%end%>
+                    </td>
+                   <td><%= strip_tags(@post.description)%></td>
+                   <td><%= @post.published%></td>
+                </tr>
+           </tbody>
+       </table>
+Comments:
+    <ul>
+        <% @post.comments.each do |comments|%>
+            <li><%= comments.body%> |by- <i><%= comments.user.name%>| 
+                <%if current_user.present? %>
+                    <% if(current_user.id == @post.user.id || current_user.id == comments.user.id) %>
+                        <%= link_to "", "/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill"%>
+                        <%= link_to "", "/posts/#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square"%>
+                    <%elsif current_user.role.name == "Admin" || current_user.role.name == "SuperAdmin" %>
+                        <%= link_to "", "/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill"%>
+                        <%= link_to "", "/posts/#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square"%>
+                    <%end%>
+                <%end%>
+            </li>
+        <%end%>
+        <%= render partial: "comments/form"%>
+    </ul>
+<%= link_to 'Back', posts_path %>
+ 

@@ -1,0 +1,23 @@
+{:uriI"æfile:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/readonly.html?type=text/html&id=512660312712966ca5d9bfa5a6e2e8464ef5aa72e0c808ae03d2bea3801fa548:ET:load_pathI"[/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts;T:filenameI"Œ/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/readonly.html;T:	nameI"5ckeditor/plugins/exportpdf/tests/manual/readonly;T:logical_pathI":ckeditor/plugins/exportpdf/tests/manual/readonly.html;T:content_typeI"text/html;T:sourceI"‰
+<div id="editor">
+	<p>This editor is read-only.</p>
+</div>
+
+<button id="toggle">Toggle read-only mode</button>
+
+<script>
+	exportPdfUtils.initManualTest();
+
+	var editor = CKEDITOR.replace( 'editor', exportPdfUtils.getDefaultConfig( 'manual', {
+		readOnly: true
+	} ) );
+
+	CKEDITOR.document.getById( 'toggle' ).on( 'click', function() {
+		editor.setReadOnly( !editor.readOnly );
+	} );
+</script>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"šfile-digest:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/readonly.html;TTF:charsetI"
+utf-8;F:digest"%"Š¥AUä‘Î7f‚®Sª#ÊDj Eù‰*c||0FÛ:lengthi‰:dependencies_digest"%X8©Ð¤¡Ëý*½éoÏiŸ‰ö1i/H¢×œòÉ:idI"E512660312712966ca5d9bfa5a6e2e8464ef5aa72e0c808ae03d2bea3801fa548;F:
+mtimel+#@µb

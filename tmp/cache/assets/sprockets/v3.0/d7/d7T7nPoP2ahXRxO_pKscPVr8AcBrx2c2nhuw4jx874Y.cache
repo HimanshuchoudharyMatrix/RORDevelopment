@@ -1,0 +1,32 @@
+{:uriI"Ïfile:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/configfilename.html?type=text/html&id=b675436ef90f4448912790918d67bb6b683fe631246b3db6dc4439abf0d2d80b:ET:load_pathI"[/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts;T:filenameI"í/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/configfilename.html;T:	nameI";ckeditor/plugins/exportpdf/tests/manual/configfilename;T:logical_pathI"@ckeditor/plugins/exportpdf/tests/manual/configfilename.html;T:content_typeI"text/html;T:sourceI"õ<div id="editor1">
+	<p>My filename should be 'ckeditor4-export-pdf.pdf'.</p>
+</div>
+
+<div id="editor2">
+	<p>And mine - 'different-name.pdf'.</p>
+</div>
+
+<div id="editor3">
+	<h1>Beautiful title</h1>
+</div>
+
+<script>
+	exportPdfUtils.initManualTest();
+
+	CKEDITOR.replace( 'editor1', exportPdfUtils.getDefaultConfig( 'manual' ) );
+
+	CKEDITOR.replace( 'editor2', exportPdfUtils.getDefaultConfig( 'manual', {
+		exportPdf_fileName: 'different-name.pdf',
+	} ) );
+
+	var editor3 = CKEDITOR.replace( 'editor3', exportPdfUtils.getDefaultConfig( 'manual', {
+		exportPdf_fileName: function() {
+			return editor3.editable().findOne( 'h1' ).getText() + '.pdf';
+		}
+	} ) );
+</script>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"†file-digest:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/configfilename.html;TTF:charsetI"
+utf-8;F:digest"%T™Ï&†Âóp˙¶F∞¢îb∂fúP%˙„Gä?+:lengthiõ:dependencies_digest"%ŒÿŒØÇ™8Çeí9)R&YXç°ï|NA.Ï7≥#}:idI"Eb675436ef90f4448912790918d67bb6b683fe631246b3db6dc4439abf0d2d80b;F:
+mtimel+#@µb

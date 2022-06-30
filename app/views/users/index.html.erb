@@ -1,0 +1,34 @@
+
+<p>Welcome to home page......</p>
+    <table class="table table-striped table-image">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">User Name</th>
+                <th scope="col">Role</th>
+                <% if current_user.present?%> 
+                    <th scope="col">Action</th>
+                <%end%>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |u|%>
+                <tr>
+                    <td><%= u.name %></td>
+                    <td><%= u.role.name%></td>
+                    <td><%if current_user.present?%>
+                            <p><%= link_to "Details", "/users/#{u.id}", class: "bi bi-eye-fill"%></p>
+                            <% if current_user.role.name == "SuperAdmin"%>
+                                <p><%= link_to "Delete", "/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
+                                <p><%= link_to "Edit", edit_user_registration_path(u.id),class: "bi bi-pencil-square"%></p>
+                               
+                            <%end%>
+                            <% if (current_user.role.name == "Admin" || current_user.role.name == "User") && current_user.id.eql?(u.id) %>
+                                <p><%= link_to "Delete", "/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"},  class:"bi bi-trash3-fill"%></p>
+                                <p><%= link_to "Edit", edit_user_registration_path(u.id), class: "bi bi-pencil-square"%></p>
+                            <%end%>
+                        <%end%>
+                    </td>
+                </tr>
+            <%end%>
+        </tbody>
+    </table> 

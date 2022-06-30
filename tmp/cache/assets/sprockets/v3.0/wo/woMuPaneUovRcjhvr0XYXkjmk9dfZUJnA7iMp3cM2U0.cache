@@ -1,0 +1,50 @@
+{:uriI"file:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/notificationsasync.html?type=text/html&id=710714134f6a40b2874ca383b4d0e71de2ecdf28e40c273829ad108df916bf67:ET:load_pathI"[/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts;T:filenameI"ñ/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/notificationsasync.html;T:	nameI"?ckeditor/plugins/exportpdf/tests/manual/notificationsasync;T:logical_pathI"Dckeditor/plugins/exportpdf/tests/manual/notificationsasync.html;T:content_typeI"text/html;T:sourceI"Í<div id="editor1">
+	<p>Export to PDF test 1.</p>
+</div>
+
+<div id="editor2">
+	<p>Export to PDF test 2.</p>
+</div>
+
+<script>
+	exportPdfUtils.initManualTest();
+
+	var editor1 = CKEDITOR.replace( 'editor1', exportPdfUtils.getDefaultConfig( 'manual' ) );
+
+	editor1.on( 'exportPdf', function( evt ) {
+		if ( !evt.data.asyncDone ) {
+			setTimeout( function() {
+				evt.data.html = '<p>Content filtered!</p>';
+				evt.data.asyncDone = true;
+
+				editor1.fire( 'exportPdf', evt.data );
+			}, 2000 );
+
+			evt.cancel();
+		} else {
+			delete evt.data.asyncDone;
+		}
+	}, null, null, 1 );
+
+	var editor2 = CKEDITOR.replace( 'editor2', exportPdfUtils.getDefaultConfig( 'manual' ) );
+
+	editor2.on( 'exportPdf', function( evt ) {
+		if ( !evt.data.asyncDone ) {
+			setTimeout( function() {
+				evt.data.html = '<p>Content filtered!</p>';
+				evt.data.asyncDone = true;
+
+				editor2.fire( 'exportPdf', evt.data );
+			}, 2000 );
+
+			evt.cancel();
+		} else {
+			delete evt.data.asyncDone;
+		}
+	}, null, null, 17 );
+</script>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"§file-digest:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/notificationsasync.html;TTF:charsetI"
+utf-8;F:digest"%µ⁄Û∆‹d…~mùOÓœ9x∏ˇJÅ˚§Èënêﬁ©¡\Ë:lengthiÍ:dependencies_digest"%ú_2˝<Oßnâ‰ª’EÃJ!=|¸Ï6}§ıT™Õoæ:idI"E710714134f6a40b2874ca383b4d0e71de2ecdf28e40c273829ad108df916bf67;F:
+mtimel+#@µb
