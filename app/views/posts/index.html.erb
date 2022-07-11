@@ -29,11 +29,11 @@
             <td><%= posts.published%></td>
             <%if current_user.present?%>
                 <td><p><%= link_to "Details", post_path(posts.id), class: "bi bi-eye-fill"%></p>
-                    <% if current_user.role.name == "SuperAdmin"  %>
+                    <% if current_user.role == "superadmin"  %>
                         <p><%= link_to "Delete ", "/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
                         <p><%= link_to "Edit", edit_post_path(posts.id), class: "bi bi-pencil-square" %></p>
                     <%end%>
-                    <% if (current_user.role.name == "Admin" || current_user.role.name == "User") && (current_user.name == posts.user.name) %>
+                    <% if (current_user.role == "admin" || current_user.role == "user") && (current_user.name == posts.user.name) %>
                         <p><%= link_to "Edit", edit_post_path(posts.id), class: "bi bi-pencil-square" %></p>
                         <p><%= link_to "Delete ", "/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
                     <%end%>
@@ -54,5 +54,5 @@
 
 <%#= paginate @posts, left: 1, right: 3 %>
 <%#= paginate @posts, outer_window: 3  %>
-<h4><%= link_to 'Back', users_path%></h4>
+<b><%= link_to 'Back', users_path%></b>
           

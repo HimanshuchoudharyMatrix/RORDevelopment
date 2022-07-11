@@ -18,3 +18,4 @@
 //= require ckeditor-jquery
 //= require_tree .
 
+

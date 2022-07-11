@@ -16,8 +16,26 @@ class User < ApplicationRecord
   validates :mobile_number,   presence: true, numericality: true, length: { minimum: 10, maximum: 12  }
 
 
-  belongs_to :role
-  
+  belongs_to :role_user, optional: true
+  after_create :set_role
+
+  enum role: [:superadmin, :user, :admin]
+  #enum role: [:superadmin]
+  after_initialize :set_default_role, if: :new_record?
+ 
+
+  private
+  def set_default_role
+      self.role ||= :user
+  end
+
+  def set_role
+       if self.role_user_id.present?
+            @message="Done"
+        else 
+        self.role_user_id = 1
+        end
+    end
   # def self.from_omniauth(auth)
   #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
   #     user.email = auth.info.email

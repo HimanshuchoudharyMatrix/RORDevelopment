@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :destroy, :edit]
+  before_action :set_user, only: [:show, :destroy, :edit, :update]
   def index
     @users = User.all.order("name ASC")
   end
@@ -18,10 +18,23 @@ class UsersController < ApplicationController
 
   def edit 
   end
+
+  def update 
+    @user.update(user_params)
+
+    redirect_to users_path
+    
+  end
+
   
   private
   def set_user
     @user = User.find(params[:id])
   end
+
+  def user_params
+    params.required(:user).permit(:name, :mobile_number, :role)
+  end
+
   
 end
