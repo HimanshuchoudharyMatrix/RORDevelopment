@@ -3,14 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, 
+         :recoverable, :rememberable, :validatable,
+         :confirmable, 
          :omniauthable, omniauth_providers: [:google_oauth2]
-  
-  
+         
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-
-
+  
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true
   validates :mobile_number,   presence: true, numericality: true, length: { minimum: 10, maximum: 12  }

@@ -1,55 +1,59 @@
-<h2>Posts</h2>
-<div class="container-fluid">
-<table class="table table-striped table-image">
-    <thead class="thead-dark">
-        <tr>
-            <%# <th scope="col">S.no.</th> %>
-            <th scope="col">User Name</th>
-            <th scope="col">Title</th>
-            <th scope="col">Image</th>
-            <th scope="col">Description</th>
-            <th scope="col">Published</th>
-            <% if current_user.present?%>
-                <th scope="col">Action</th>
-                <th scope="col">Comment</th>
-            <%end%>
-        </tr>
-    </thead>
-    <tbody>  
-        <% @posts.each do |posts|%>
-        <tr>
-            <%# <th scope="row"><%= i+1 %>
-            <td> <%= posts.user.name%></td>
-            <td><%= posts.title %></td>
-            <td><% if posts.image.exists? %>
-                    <%= image_tag(posts.image.url, width: "150", height: "150")%>
+<% if @posts.present? %>
+    <h2>Posts</h2>
+    <div class="container-fluid">
+        <table class="table table-striped table-image">
+            <thead class="thead-dark">
+                <tr>
+                    <%# <th scope="col">S.no.</th> %>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Published</th>
+                    <% if current_user.present?%>
+                        <th scope="col">Action</th>
+                        <th scope="col">Comment</th>
+                    <%end%>
+                </tr>
+            </thead>
+            <tbody>  
+                <% @posts.each do |posts|%>
+                <tr>
+                    <%# <th scope="row"><%= i+1 %>
+                    <td> <%= posts.user.name%></td>
+                    <td><%= posts.title %></td>
+                    <td><% if posts.image.exists? %>
+                            <%= image_tag(posts.image.url, width: "150", height: "150")%>
+                        <%end%>
+                    </td>
+                    <td><%= strip_tags( posts.description ) %></td>
+                    <td><%= posts.published%></td>
+                    <%if current_user.present?%>
+                        <td><p><%= link_to "Details", post_path(posts.id), class: "bi bi-eye-fill"%></p>
+                            <% if current_user.role == "superadmin"  %>
+                                <p><%= link_to "Delete ", "/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
+                                <p><%= link_to "Edit", edit_post_path(posts.id), class: "bi bi-pencil-square" %></p>
+                            <%end%>
+                            <% if (current_user.role == "admin" || current_user.role == "user") && (current_user.name == posts.user.name) %>
+                                <p><%= link_to "Edit", edit_post_path(posts.id), class: "bi bi-pencil-square" %></p>
+                                <p><%= link_to "Delete ", "/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
+                            <%end%>
+                        </td>
+                        <td><%if posts.comments.present? %>
+                                <p><%= link_to posts.comments.count, "/posts/#{posts.id}/comments", class: "bi bi-chat-right-dots-fill"%></p>
+                            <%else%>
+                                <p>No comments!</p>
+                            <%end%>
+                        </td>
+                    <%end%>
+                </tr>
                 <%end%>
-            </td>
-            <td><%= strip_tags( posts.description ) %></td>
-            <td><%= posts.published%></td>
-            <%if current_user.present?%>
-                <td><p><%= link_to "Details", post_path(posts.id), class: "bi bi-eye-fill"%></p>
-                    <% if current_user.role == "superadmin"  %>
-                        <p><%= link_to "Delete ", "/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
-                        <p><%= link_to "Edit", edit_post_path(posts.id), class: "bi bi-pencil-square" %></p>
-                    <%end%>
-                    <% if (current_user.role == "admin" || current_user.role == "user") && (current_user.name == posts.user.name) %>
-                        <p><%= link_to "Edit", edit_post_path(posts.id), class: "bi bi-pencil-square" %></p>
-                        <p><%= link_to "Delete ", "/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
-                    <%end%>
-                </td>
-                <td><%if posts.comments.present? %>
-                        <p><%= link_to posts.comments.count, "/posts/#{posts.id}/comments", class: "bi bi-chat-right-dots-fill"%></p>
-                    <%else%>
-                        <p>No comments!</p>
-                    <%end%>
-                </td>
-            <%end%>
-        </tr>
-        <%end%>
-    </tbody>
-</table>
-</div>
+            </tbody>
+        </table>
+    </div>
+<%else%>
+    <h5> There is no post..!</h5>
+<%end%>
 <%= paginate @posts%>
 
 <%#= paginate @posts, left: 1, right: 3 %>

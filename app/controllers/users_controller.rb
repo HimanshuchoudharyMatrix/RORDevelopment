@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @users = User.all.order("name ASC")
   end
 
+  def welcome
+
+  end
+
   def show
     
   end

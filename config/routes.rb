@@ -15,9 +15,11 @@ Rails.application.routes.draw do
    
   end
 
-  root to: 'users#index'
+  root to: 'users#welcome'
+
   devise_for :users, controllers: { 
     omniauth_callbacks: 'users/omniauth_callbacks',
+    confirmation: 'confirmation'
     }
 
   resources :users

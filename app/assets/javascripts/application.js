@@ -16,6 +16,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require ckeditor-jquery
+//= require bootstrap
+//= require adminlte/adminlte
 //= require_tree .
 
 
