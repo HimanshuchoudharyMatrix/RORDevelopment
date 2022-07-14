@@ -9,12 +9,9 @@ Rails.application.routes.draw do
   # get 'posts/edit'
   # get 'posts/update'
   # get 'posts/delete'
-   
   resources :posts  do
     resources :comments
-   
   end
-
   root to: 'users#welcome'
 
   devise_for :users, controllers: { 
@@ -22,9 +19,17 @@ Rails.application.routes.draw do
     confirmation: 'confirmation'
     }
 
+  namespace :admin do
+    root to: 'users#welcome'
+    
+    resources :users
+    resources :posts  do
+      resources :comments
+    end 
+    get '/users/:id/posts', to: 'users#user_post', as: 'user_post'
+  end
+
+  get '/users/:id/posts', to: 'users#user_post', as: 'user_post' #custom routes
   resources :users
-
-
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

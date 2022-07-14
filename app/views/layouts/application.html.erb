@@ -14,33 +14,16 @@
     <%= javascript_include_tag 'ckeditor/config.js' %>
     
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-      <%= render "/base/header" %>
-      <%= render "/base/sidebar" %>
-      <div class="content-wrapper">
-        <section class="content-header">
-          <h1>
-            Page Header
-            <small>Optional description</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
-        </section>
-        
-          <%= yield %>
-        
-      </div>
-      <%= render "/base/footer" %>
-      <%= render "/base/control_sidebar" %>
-    <div>
+
+  <body >
+        <%= render "/shared/header" %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+        <%= render "/shared/footer"%>
   </body>
 </html>
-  <!--%= render "/shared/header" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   
-    <%= render "/shared/footer"%-->
+    
+    
     

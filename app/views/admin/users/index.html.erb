@@ -1,0 +1,44 @@
+<p>User's list</p>
+<div class="container-fluid">
+    <table class="table table-striped table-image">
+        <thead class="thead-dark">
+            <tr>
+                <th scope ="col"> User Id</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Role</th>
+                <% if current_user.present?%> 
+                    <th scope="col">Action</th>
+                <%end%>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |u|%>
+                <tr>
+                    <td><%= u.id%></td>
+                    <td><%= u.name %></td>
+                    <td><%= u.role%></td>
+                    <td><%if current_user.present?%>
+                            <%= link_to "", "/admin/users/#{u.id}", class: "bi bi-eye-fill"%>
+                            <% if current_user.role == "superadmin"%>
+                                <%= link_to "", "/admin/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%>
+                                <% if current_user.name == u.name%>
+                                    <%= link_to "", edit_user_registration_path(u.id),class: "bi bi-pencil-square"%>
+                                <%else%>
+                                    <%= link_to "", edit_admin_user_path(u.id),class: "bi bi-pencil-square"%>
+                                <%end%>
+                                <%= button_tag(:type => 'button') do %>
+                                    <% link_to "Post", "/admin/users/#{u.id}/posts" %>
+                                <% end %>
+                            <%end%>
+                            <% if (current_user.role == "admin" || current_user.role == "user") && current_user.id.eql?(u.id) %>
+                                <%= link_to "Delete", "/admin/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"}, class:"bi bi-trash3-fill"%>
+                                <%= link_to "Edit", edit_admin_user_registration_path(u.id), class: "bi bi-pencil-square"%>
+                            
+                            <%end%>
+                        <%end%>
+                    </td>
+                </tr>
+            <%end%>
+        </tbody>
+    </table> 
+</div>

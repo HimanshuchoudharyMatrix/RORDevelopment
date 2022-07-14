@@ -1,0 +1,5 @@
+<%= form_for [@post, Comment.new] do |f|%>
+    <%= f.text_area :body, class:'comments-area'%>
+    <%= f.text_area :user_id, value: current_user.id, class:'d-none'%>
+    <i><%= f.submit "create comment", type: "submit", :class=> "btn btn-primary" %></i>
+<%end%>

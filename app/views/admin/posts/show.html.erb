@@ -1,0 +1,42 @@
+<p>Post-by:<%= @post.user.name %></p>
+<div class= "bg-secondary text-white">
+
+<div class= "row">
+    <div class = "col-9">
+        <div class= "pb-3">
+            <b style="color:black">Title :</b> <%= @post.title %>
+        </div>
+   </div>
+    <div class = "col-6 ">
+       <%#= image_tag(@post.image.url, width: "300", height: "300")%>
+        <b style="color:black">Description :</b><%=strip_tags(@post.description)%>
+    </div>
+    <div class = "col-3">
+        <%= image_tag(@post.image.url, width: "450", height: "400")%>
+    </div>
+    <div class="col-4">
+    <b style="color:black">Published :</b><%= @post.published%>
+    </div>
+</div>
+
+<b style="color:black">Comments:</b><br />
+    <ul>
+        <% @post.comments.each do |comments|%>
+           <li style="color:black"><%= comments.body %> | by- <i ><%= comments.user.name%> </i>| 
+                <%if current_user.present? %>
+                    <% if(current_user.id == @post.user.id || current_user.id == comments.user.id) %>
+                        <%= link_to "", "/admin/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill icon-green", style:"color:red"%>
+                        <%= link_to "", "/admin/posts/#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square", style:"color:blue"%>
+                    <%elsif current_user.userrole.name == "Admin" || current_user.userrole.name == "SuperAdmin" %>
+                        <%= link_to "", "/admin/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill",style:"color:red"%>                        
+                        <%= link_to "", "/admin/posts/:#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square", style:"color:blue"%>
+                    <%end%>
+                <%end%>
+            </li>
+        <%end%>
+    <ul>
+<div class = ""><%= render partial: "comments/form"%></div>
+</div >
+
+<b><%= link_to 'Back', admin_posts_path%></b>
+ 

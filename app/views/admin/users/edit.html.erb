@@ -1,0 +1,27 @@
+<%= form_for [:admin, @user] do |f| %>
+
+  <div class="field">
+    <%= f.label :name%><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_number%><br />
+    <%= f.number_field :mobile_number%>
+  <div>
+   <div class="field">
+    <%= f.label :role %>
+    <%= f.select(:role, [['User', 'user'], ['Admin', 'admin']]) %>
+    <%#= f.select :role, options_for_select(User.roles.map {|key, value| [key.titleize, User.roles.key(value)]}, @user.role) %>
+   
+  </div>
+  <!--/div>
+  <%= f.label :role_user %>
+ <%= f.select :role_user_id, RoleUser.all.map { |r| [ r.rolename, r.id ] } %>
+  <div-->
+   <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+
+  <%end%>
+
+<%= link_to "Back", admin_users_path %> 

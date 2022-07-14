@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UserModule</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application','data-turbolinks-track': 'reload' %>
+   
+    <%= javascript_include_tag 'ckeditor/config.js' %>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <%= render "/base/header" %>
+        <%= render "/base/sidebar" %>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <p class="notice"><%= notice %></p>
+                <p class="alert"><%= alert %></p>
+            </section>
+            <%= yield %>
+        </div>
+        <%= render "/base/footer" %>
+        <%#= render "/base/control_sidebar" %>
+    <div>
+</body>
+</html>

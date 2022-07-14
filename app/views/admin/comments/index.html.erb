@@ -1,0 +1,11 @@
+
+<ul>Comments:
+<% 
+@post.comments.each do |comments|%>
+   <li><%= comments.body%> |<i> by- <%= comments.user.name%></i>|
+   <% if current_user.name.eql?(@post.user.name) || current_user.role.name.eql?("SuperAdmin") || current_user.role.name.eql?("Admin") %>
+   (<%= link_to "delete", "admin/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}%>)
+   <%end%>
+<%end%>
+
+</ul>

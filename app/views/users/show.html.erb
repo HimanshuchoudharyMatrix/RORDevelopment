@@ -1,7 +1,24 @@
-<h2>------Details of user-----</h2>
+<div>
+    <table class="user-table center" style="width:80%">
+        <tr>
+            <th colspan="5">Details of user</th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td><%= @user.name%></td>
+            <td><%= @user.role%></td>
+            <td><%= @user.mobile_number%></td>
+            <td><%= @user.email%>
+            <td><%= link_to "", edit_user_registration_path(@user.id),class: "bi bi-pencil-square"%>
+                <%= link_to "", "/users/#{@user.id}", method: "delete", data: {confirm: "are you sure ?"}, class:"bi bi-trash3-fill"%></td>
+        </tr>
+    </table>
+<div>
+<b><%= link_to "Back", posts_path%></b>
 
-<p>Name = <%= @user.name%></p>
-<p>Role = <%= @user.role%></p>
-<p>Mobile No. = <%= @user.mobile_number%></p>
-<p>Email = <%= @user.email%>
-<%#= @user.role_user.rolename %>
