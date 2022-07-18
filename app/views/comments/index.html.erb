@@ -2,9 +2,12 @@
 <ul>Comments:
 <% @post.comments.each do |comments|%>
    <li><%= comments.body%> |<i> by- <%= comments.user.name%></i>|
-   <% if current_user.name.eql?(@post.user.name) || current_user.role.name.eql?("SuperAdmin") || current_user.role.name.eql?("Admin") %>
-   (<%= link_to "delete", "/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}%>)
-   <%end%>
+      <% if (current_user.name.eql?(comments.user.name) || current_user.name.eql?(@post.user.name)) %>
+         <%= link_to "", "/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill",style:"color:blue"%>
+         <%= link_to "", "/posts/#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square", style:"color:blue"%>
+      <% elsif (current_user.role.eql?("superadmin") || current_user.role.eql?("admin") )%>
+         <%= link_to "", "/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill",style:"color:blue"%>
+         <%= link_to "", "/posts/#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square", style:"color:blue"%>
+      <%end%>
 <%end%>
-
 </ul>

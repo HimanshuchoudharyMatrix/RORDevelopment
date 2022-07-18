@@ -25,17 +25,17 @@
            <li style="color:black"><%= comments.body %> | by- <i ><%= comments.user.name%> </i>| 
                 <%if current_user.present? %>
                     <% if(current_user.id == @post.user.id || current_user.id == comments.user.id) %>
-                        <%= link_to "", "/admin/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill icon-green", style:"color:red"%>
-                        <%= link_to "", "/admin/posts/#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square", style:"color:blue"%>
-                    <%elsif current_user.userrole.name == "Admin" || current_user.userrole.name == "SuperAdmin" %>
-                        <%= link_to "", "/admin/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill",style:"color:red"%>                        
-                        <%= link_to "", "/admin/posts/:#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square", style:"color:blue"%>
+                        <%= link_to "", "/admin/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill link-color"%>
+                        <%= link_to "", "/admin/posts/#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square link-color"%>
+                    <%elsif current_user.role == "admin" || current_user.role == "superadmin" %>
+                        <%= link_to "", "/admin/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill link-color"%>                        
+                        <%= link_to "", "/admin/posts/:#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square link-color"%>
                     <%end%>
                 <%end%>
             </li>
         <%end%>
     <ul>
-<div class = ""><%= render partial: "comments/form"%></div>
+<div class = ""><%= render partial: "admin/comments/form"%></div>
 </div >
 
 <b><%= link_to 'Back', admin_posts_path%></b>

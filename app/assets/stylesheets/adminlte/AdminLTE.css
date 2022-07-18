@@ -77,9 +77,9 @@ body {
   }
 }
 .main-footer {
-  background: #fff;
+  background: rgb(28, 101, 170);
   padding: 15px;
-  color: #444;
+  color: rgb(253, 252, 252);
   border-top: 1px solid #d2d6de;
 }
 /* Fixed layout */
@@ -186,7 +186,7 @@ a:focus {
   float: none;
   background-color: transparent;
   background-image: none;
-  padding: 10px 10px;
+  padding:3px 3px;
   font-family: fontAwesome;
 }
 .main-header .sidebar-toggle:before {
@@ -461,28 +461,17 @@ a:focus {
     margin-left: 50px;
   }
 
-  .sidebar-mini.sidebar-collapse .main-sidebar .sidebar .logo{
+  .sidebar-mini.sidebar-collapse .main-sidebar .sidebar {
     width: 50px
  }
-
-  .sidebar-mini.sidebar-collapse .main-sidebar .sidebar .logo > li >.logo-mini{
-    display: block;
-   
-    margin-right: 25px;
-    font-size: 20px;
-  }
-
-  .sidebar-mini.sidebar-collapse .main-sidebar .sidebar .logo > li >.logo-lg{
-    display: none;
-  }
   
- .sidebar-mini.sidebar-collapse .main-sidebar .sidebar .logo > .logo-mini{
+ .sidebar-mini.sidebar-collapse .main-sidebar .sidebar .logo-mini{
     display: block;
    
     margin-right: 15px;
     font-size: 20px;
 }
-  .sidebar-mini.sidebar-collapse .main-sidebar .sidebar .logo > .logo-lg{
+  .sidebar-mini.sidebar-collapse .main-sidebar .sidebar .logo-lg{
     display: none;
 }
 
@@ -574,13 +563,11 @@ a:focus {
 /* NAV TABS */
 
 /* PAGINATION */
-.pagination > li > a {
-  background: #fafafa;
-  color: #666;
+.pagination{
+  
+  color: rgb(0, 0, 0);
 }
-.pagination.pagination-flat > li > a {
-  border-radius: 0 !important;
-}
+
 /*
  * Component: Products List
  * ------------------------
@@ -614,36 +601,7 @@ table.text-center th {
  * Component: Users List
  * ---------------------
  */
-.users-list > li {
-  width: 25%;
-  float: left;
-  padding: 10px;
-  text-align: center;
-}
-.users-list > li img {
-  border-radius: 50%;
-  max-width: 100%;
-  height: auto;
-}
-.users-list > li > a:hover,
-.users-list > li > a:hover .users-list-name {
-  color: #999;
-}
-.users-list-name,
-.users-list-date {
-  display: block;
-}
-.users-list-name {
-  font-weight: 600;
-  color: #444;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.users-list-date {
-  color: #999;
-  font-size: 12px;
-}
+
 /*
  * Component: Carousel
  * -------------------
@@ -1541,7 +1499,7 @@ fieldset[disabled] .btn-yahoo.focus {
 /*
  * Plugin: Full Calendar
  * ---------------------
- */
+ *
 .fc-button {
   background: #f4f4f4;
   background-image: none;
@@ -1634,7 +1592,7 @@ fieldset[disabled] .btn-yahoo.focus {
 /*
  * Plugin: Select2
  * ---------------
- */
+ *
 .select2-container--default.select2-container--focus,
 .select2-selection.select2-container--focus,
 .select2-container--default:focus,
@@ -1756,7 +1714,7 @@ fieldset[disabled] .btn-yahoo.focus {
 /*
  * General: Miscellaneous
  * ----------------------
- */
+ *
 .pad {
   padding: 10px;
 }

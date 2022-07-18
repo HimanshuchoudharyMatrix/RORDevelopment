@@ -1,16 +1,17 @@
 <header class=" header navbar navbar-fixed-top navbar-inverse" style= "background-color: rgba(0, 0, 0, 0.2);">
       <div class="container-fluid" >
-            <h5><%= link_to "Posts", posts_path%>
+            <h5>
             <% if current_user.present? %>
                   <%if (current_user.role == "superadmin") || (current_user.role == "admin")%>
-                        | <%= link_to "Admin", admin_users_path%>
+                         <%= link_to "Admin", admin_users_path%>
                   <%else%>
-                        | <%= link_to "Create Post", new_post_path%>
+                         <%= link_to "Create Post", new_post_path%>
+                        | <%= link_to "Posts", posts_path%>
                   <%end%>
             <%end%></h5>
             <nav class="navbar-fixed-top">
                   <div class="pull-right">
-                        <% if current_user.present? %>
+                        <% if current_user.present? && current_user.role.eql?("user") %>
                               <b><%= link_to current_user.name, "/users/#{current_user.id}"%><i class= "bi bi-eye-fill" style="color:green"></i></b>|
                               <%= link_to "Sign out", destroy_user_session_path, method: 'delete'%> 
                         <%end%>

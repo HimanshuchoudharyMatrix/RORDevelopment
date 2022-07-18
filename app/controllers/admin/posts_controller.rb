@@ -2,12 +2,8 @@ class Admin::PostsController < AdminController
 before_action :required_post, only: [:show, :edit, :update, :destroy]
   
   def index
-    @posts = Post.published.order("id desc").page(params[:page]).per(3)
-    if current_user.present?
-      @posts = Post.published.or(Post.unpublished.where(user_id: current_user.id)).order("id desc").page(params[:page]).per(3)
-    end
-
-
+    @posts = Post.all.order("id desc").page(params[:page]).per(3)
+   
   end
 
   def show
@@ -34,8 +30,8 @@ before_action :required_post, only: [:show, :edit, :update, :destroy]
   end
 
   def update
-    if @post.update(post_params)
-        redirect_to admin_post_path(@post)
+    if @post.update(edit_params)
+        redirect_to admin_posts_path(@post)
     else
         render 'edit'
     end
@@ -50,6 +46,10 @@ before_action :required_post, only: [:show, :edit, :update, :destroy]
   private
   def post_params
     params.required(:post).permit(:title, :description, :image, :published, :user_id)
+  end
+
+  def edit_params
+    params.required(:post).permit(:title, :description, :image, :published)
   end
 
   def required_post

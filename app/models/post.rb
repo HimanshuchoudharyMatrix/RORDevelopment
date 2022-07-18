@@ -9,7 +9,7 @@ class Post < ApplicationRecord
    
     validates :title, presence: true
     
-    validates :description, length: { maximum: 1000} ,presence: true
+    validates :description, presence: true
 
    
     scope :published, -> { where( published: true ) }

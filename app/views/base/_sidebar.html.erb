@@ -1,15 +1,11 @@
 <aside class="main-sidebar">
   <section class="sidebar">
     <div class="user-panel">
-      <div>
-        <div class="pull-left info">
-          <% if current_user.present? %>
-            <b style="color:black"><%= current_user.name %></b> <i class="fa fa-circle text-success"></i>
-        </div>
-      </div>
+            <span class= "logo-mini"><i class="fa fa-circle text-success"></i></span>
+            <span class="logo-lg"><b><%= link_to current_user.name, admin_user_path(current_user.id) %></b></span>
     </div>
 
-      <!-- search form (Optional) ->
+      <!--search form (Optional) ->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -19,10 +15,9 @@
             </span>
         </div>
       </form>
-      <!- /.search form -->
+      <--/.search form -->
 
     <ul class="sidebar-menu sidebar" data-widget="tree">
-      <div class="logo">
       <li>
         <span class="logo-mini"><%= link_to "", admin_root_path, class:"bi bi-house-door-fill"%></span>
         <span class="logo-lg"><%= link_to "Home", admin_root_path%></span>
@@ -34,15 +29,8 @@
       <li><span class="logo-mini"><%= link_to "", admin_posts_path, class:"bi bi-postcard-fill"%></span>
         <span class="logo-lg"><%= link_to "Posts", admin_posts_path%></span>
       </li>
-      </div>
+     
     </ul>
-  
-    <%else%>
-    <div class="logo">
-      <span class="logo-mini"><i class="bi bi-postcard-heart-fill"></i></span>
-      <span class="logo-lg"><%= link_to "Posts", admin_posts_path %></span>
-    </div>
-    <%end%>
-    </section>
+  </section>
     <!-- /.sidebar -->
 </aside>

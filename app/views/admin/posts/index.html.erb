@@ -13,7 +13,7 @@
                     <th scope="col">Published</th>
                     <% if current_user.present?%>
                         <th scope="col">Action</th>
-                        <th scope="col">Comment</th>
+                        <th scope="col">Comments</th>
                     <%end%>
                 </tr>
             </thead>
@@ -30,20 +30,20 @@
                     <td><%= strip_tags( posts.description ) %></td>
                     <td><%= posts.published%></td>
                     <%if current_user.present?%>
-                        <td><p><%= link_to "Details", admin_post_path(posts.id), class: "bi bi-eye-fill"%></p>
+                        <td><%= link_to "", admin_post_path(posts.id), class: "bi bi-eye-fill"%>
                             <% if current_user.role == "superadmin"  %>
-                                <p><%= link_to "Delete ", "/admin/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
-                                <p><%= link_to "Edit", edit_admin_post_path(posts.id), class: "bi bi-pencil-square" %></p>
+                                <%= link_to "", "/admin/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%>
+                                <%= link_to "", edit_admin_post_path(posts.id), class: "bi bi-pencil-square" %>
                             <%end%>
                             <% if (current_user.role == "admin" || current_user.role == "user") && (current_user.name == posts.user.name) %>
-                                <p><%= link_to "Edit", edit_admin_post_path(posts.id), class: "bi bi-pencil-square" %></p>
-                                <p><%= link_to "Delete ", "/admin/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%></p>
+                                <%= link_to "", edit_admin_post_path(posts.id), class: "bi bi-pencil-square" %>
+                                <%= link_to " ", "/admin/posts/#{posts.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%>
                             <%end%>
                         </td>
                         <td><%if posts.comments.present? %>
-                                <p><%= link_to posts.comments.count, "/admin/posts/#{posts.id}/comments", class: "bi bi-chat-right-dots-fill"%></p>
+                                <%= link_to posts.comments.count, "/admin/posts/#{posts.id}/comments", class: "bi bi-chat-right-dots-fill"%>
                             <%else%>
-                                <p>No comments!</p>
+                                No comments!
                             <%end%>
                         </td>
                     <%end%>
@@ -55,9 +55,10 @@
 <%else%>
     <h5> There is no post..!</h5>
 <%end%>
-<%= paginate @posts%>
+
+<%= paginate @posts %>
 
 <%#= paginate @posts, left: 1, right: 3 %>
 <%#= paginate @posts, outer_window: 3  %>
-<b><%= link_to 'Back', users_path%></b>
+<b><%= link_to 'Back', admin_root_path%></b>
           

@@ -1,4 +1,10 @@
 <p>User's list</p>
+<p class= "search-field">
+    <%= form_tag(admin_users_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+        <%= submit_tag "Search" %>
+    <% end %>
+</p>
 <div class="container-fluid">
     <table class="table table-striped table-image">
         <thead class="thead-dark">
@@ -17,28 +23,24 @@
                     <td><%= u.id%></td>
                     <td><%= u.name %></td>
                     <td><%= u.role%></td>
-                    <td><%if current_user.present?%>
-                            <%= link_to "", "/admin/users/#{u.id}", class: "bi bi-eye-fill"%>
+                    <td><%= link_to "", "/admin/users/#{u.id}", class: "bi bi-eye-fill" %>
                             <% if current_user.role == "superadmin"%>
                                 <%= link_to "", "/admin/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%>
-                                <% if current_user.name == u.name%>
+                                <% if current_user.name.eql?(u.name)%>
                                     <%= link_to "", edit_user_registration_path(u.id),class: "bi bi-pencil-square"%>
                                 <%else%>
                                     <%= link_to "", edit_admin_user_path(u.id),class: "bi bi-pencil-square"%>
                                 <%end%>
-                                <%= button_tag(:type => 'button') do %>
-                                    <% link_to "Post", "/admin/users/#{u.id}/posts" %>
-                                <% end %>
                             <%end%>
-                            <% if (current_user.role == "admin" || current_user.role == "user") && current_user.id.eql?(u.id) %>
-                                <%= link_to "Delete", "/admin/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"}, class:"bi bi-trash3-fill"%>
-                                <%= link_to "Edit", edit_admin_user_registration_path(u.id), class: "bi bi-pencil-square"%>
-                            
+                            <% if current_user.role == "admin" && current_user.id.eql?(u.id) %>
+                                <%= link_to "", "/admin/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"}, class:"bi bi-trash3-fill"%>
+                                <%= link_to "", edit_user_registration_path(u.id), class: "bi bi-pencil-square"%>
                             <%end%>
-                        <%end%>
+                        <%= button_to "Posts", "/admin/users/#{u.id}/posts", method: "get", class: "btn btn-info" %>
                     </td>
                 </tr>
             <%end%>
         </tbody>
     </table> 
 </div>
+<%= paginate @users%>

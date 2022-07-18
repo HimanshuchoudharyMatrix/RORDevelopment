@@ -16,7 +16,7 @@
                     <td><%= u.id%></td>
                     <td><%= u.name %></td>
                     <td><%= u.role%></td>
-                    <td><%if current_user.present?%>
+                    <!--td><%if current_user.present?%>
                             <%= link_to "", "/users/#{u.id}", class: "bi bi-eye-fill"%>
                             <% if current_user.role == "superadmin"%>
                                 <%= link_to "", "/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%>
@@ -32,9 +32,8 @@
                             <% if (current_user.role == "admin" || current_user.role == "user") && current_user.id.eql?(u.id) %>
                                 <%= link_to "Delete", "/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"}, class:"bi bi-trash3-fill"%>
                                 <%= link_to "Edit", edit_user_registration_path(u.id), class: "bi bi-pencil-square"%>
-                            <%end%>
-                        <%end%>
-                    </td>
+                        <%#end%>
+                    </td-->
                 </tr>
             <%end%>
         </tbody>

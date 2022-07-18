@@ -1,0 +1,42 @@
+{:uriI"Èfile:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/stylesheets.html?type=text/html&id=103634ef6336e545e9d9fed04409946f3694a85b6b84aca03e65492b8801bece:ET:load_pathI"[/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts;T:filenameI"è/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/stylesheets.html;T:	nameI"8ckeditor/plugins/exportpdf/tests/manual/stylesheets;T:logical_pathI"=ckeditor/plugins/exportpdf/tests/manual/stylesheets.html;T:content_typeI"text/html;T:sourceI"å<h2>Classic Editor</h2>
+<textarea id="editor1">
+	<span class="badge badge-success">Classic Editor</span>
+</textarea>
+
+<h2>Divarea Editor</h2>
+<div id="editor2">
+	<span class="badge badge-success">Divarea Editor</span>
+</div>
+
+<h2>Inline Editor</h2>
+<div id="editor3" contenteditable="true">
+	<span class="badge badge-success">Inline Editor</span>
+</div>
+
+<script>
+	exportPdfUtils.initManualTest();
+
+	CKEDITOR.replace( 'editor1', exportPdfUtils.getDefaultConfig( 'manual', {
+		exportPdf_stylesheets: [ 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' ],
+		extraPlugins: 'wysiwygarea,exportpdf',
+		allowedContent: true
+	} ) );
+
+	CKEDITOR.replace( 'editor2', exportPdfUtils.getDefaultConfig( 'manual', {
+		exportPdf_stylesheets: [ 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' ],
+		extraPlugins: 'divarea,exportpdf',
+		allowedContent: true
+	} ) );
+
+	CKEDITOR.inline( 'editor3', exportPdfUtils.getDefaultConfig( 'manual', {
+		exportPdf_stylesheets: [ 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' ],
+		extraPlugins: 'floatingspace,exportpdf',
+		allowedContent: true
+	} ) );
+</script>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"ùfile-digest:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/stylesheets.html;TTF:charsetI"
+utf-8;F:digest"%®ß™˘nyo˘bŒ≠ÓÏ‘VOZ1Ù˛ÄöîèºYEÖdÀZî:lengthiå:dependencies_digest"%√qlfÍYØ$˜ô¨CJî∫˝
+∏:∆uk“s€"7sB&:idI"E103634ef6336e545e9d9fed04409946f3694a85b6b84aca03e65492b8801bece;F:
+mtimel+#@µb

@@ -7,8 +7,6 @@ class PostsController < ApplicationController
     if current_user.present?
       @posts = Post.published.or(Post.unpublished.where(user_id: current_user.id)).order("id desc").page(params[:page]).per(3)
     end
-
-
   end
 
   def show

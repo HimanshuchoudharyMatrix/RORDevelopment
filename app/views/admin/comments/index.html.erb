@@ -1,11 +1,12 @@
 
-<ul>Comments:
+<ol>Comments:
 <% 
 @post.comments.each do |comments|%>
    <li><%= comments.body%> |<i> by- <%= comments.user.name%></i>|
-   <% if current_user.name.eql?(@post.user.name) || current_user.role.name.eql?("SuperAdmin") || current_user.role.name.eql?("Admin") %>
-   (<%= link_to "delete", "admin/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}%>)
+   <% if current_user.name.eql?(@post.user.name) || current_user.role.eql?("superadmin") || current_user.role.eql?("admin") %>
+      <%= link_to "", "/admin/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill link-color"%>
    <%end%>
 <%end%>
+</ol>
 
-</ul>
+<b><%= link_to 'Back', admin_posts_path%></b>

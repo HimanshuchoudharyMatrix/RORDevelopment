@@ -1,5 +1,2 @@
 <h3>Welcome <%= current_user.name%>.</h3>
 This is the Post's WebApplication
-<% if current_user.present? %>
-    <%= link_to "Create Post", new_post_path%>
-<%end%>

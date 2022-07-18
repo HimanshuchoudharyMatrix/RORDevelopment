@@ -1,0 +1,32 @@
+{:uriI"Ùfile:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/integrations/easyimage.html?type=text/html&id=24593214d25f4dcd359931885d6e60d56b811147b7657ec91e98bb1059accb48:ET:load_pathI"[/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts;T:filenameI"ö/home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/integrations/easyimage.html;T:	nameI"Cckeditor/plugins/exportpdf/tests/manual/integrations/easyimage;T:logical_pathI"Hckeditor/plugins/exportpdf/tests/manual/integrations/easyimage.html;T:content_typeI"text/html;T:sourceI"<div id="editor">
+	<p>Foo bar</p>
+</div>
+
+<div id="tokenValue" style="word-break:break-all;border:1px solid red;"></div>
+
+<script>
+	exportPdfUtils.initManualTest();
+
+	var editor = CKEDITOR.replace( 'editor', exportPdfUtils.getDefaultConfig( 'manual', {
+		extraPlugins: 'easyimage,exportpdf',
+		cloudServices_uploadUrl: 'https://33333.cke-cs.com/easyimage/upload/',
+		cloudServices_tokenUrl: 'https://33333.cke-cs.com/token/dev/ijrDsqFix838Gh3wGO3F77FSW94BwcLXprJ4APSp3XQ26xsUHTi0jcb1hoBt'
+	} ) );
+
+	editor.on( 'instanceReady', function() {
+		if ( !CKEDITOR.config.exportPdf_tokenUrl ) {
+			bender.ignore();
+		}
+	} );
+
+	editor.on( 'exportPdf', function( evt ) {
+		var value = CKEDITOR.document.findOne( '#tokenValue' );
+
+		value.setHtml( evt.data.token );
+	}, null, null, 17 );
+</script>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"®file-digest:///home/matrix/.rvm/gems/ruby-2.7.1/gems/ckeditor_rails-4.17.0/vendor/assets/javascripts/ckeditor/plugins/exportpdf/tests/manual/integrations/easyimage.html;TTF:charsetI"
+utf-8;F:digest"%¿…ÒÔ≥1êﬁÛD…«ïÈ£éÖàÆ°fˆ*-F:lengthi:dependencies_digest"%G:ÇSÕ_J8à∂ç,∑π„)¶[ƒŸ]‰Oç,TT„Q¥•:idI"E24593214d25f4dcd359931885d6e60d56b811147b7657ec91e98bb1059accb48;F:
+mtimel+#@µb

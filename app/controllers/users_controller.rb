@@ -1,14 +1,19 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:show, :destroy, :edit, :update, :user_post]
+ 
   def index
-    @users = User.all.order("name ASC")
+    
+    if params[:search]
+      @users = User.search(params[:search]).order("created_at DESC")
+    else
+      @users = User.all.order('created_at DESC')
+    end
+   
   end
 
   def welcome
 
-  end
-  def user_post
   end
 
   def show
@@ -41,6 +46,5 @@ class UsersController < ApplicationController
   def user_params
     params.required(:user).permit(:name, :mobile_number, :role)
   end
-
   
 end

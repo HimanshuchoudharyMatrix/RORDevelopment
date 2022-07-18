@@ -1,7 +1,7 @@
 <div>
-    <table class="user-table center" style="width:80%">
+    <table class="user-table center" style="width:90%">
         <tr>
-            <th colspan="5">Details of user</th>
+            <th colspan="5">Details of <%= @user.name%></th>
         </tr>
         <tr>
             <th>Name</th>
@@ -20,5 +20,5 @@
         </tr>
     </table>
 <div>
-<b><%= link_to "Back", posts_path%></b>
+<b><%= link_to "Back", root_path%></b>
 

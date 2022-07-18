@@ -26,7 +26,7 @@
                     <% if(current_user.id == @post.user.id || current_user.id == comments.user.id) %>
                         <%= link_to "", "/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill icon-green", style:"color:red"%>
                         <%= link_to "", "/posts/#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square", style:"color:blue"%>
-                    <%elsif current_user.userrole.name == "Admin" || current_user.userrole.name == "SuperAdmin" %>
+                    <%elsif current_user.role == "admin" || current_user.role == "superadmin" %>
                         <%= link_to "", "/posts/#{@post.id}:/comments/#{comments.id}", method: "delete", data: {confirm: "are you sure"}, class: "bi bi-trash3-fill",style:"color:red"%>                        
                         <%= link_to "", "/posts/:#{@post.id}/comments/#{comments.id}/edit", class: "bi bi-pencil-square", style:"color:blue"%>
                     <%end%>

@@ -2,23 +2,16 @@ class Admin::UsersController < AdminController
    
     before_action :authenticate_user!
     before_action :set_user, only: [:show, :destroy, :edit, :update, :user_post]
-    
+    #before_action :set_post, only: [:user_post]
     def index
-      @users = User.all.order("name ASC")
-    end
-  
-    def welcome
-  
-    end
-    def user_post
-    end
-  
-    def show
-      
+      if params[:search]
+        @users = User.search(params[:search]).order("created_at DESC").page(params[:page]).per(4)
+      else
+        @users = User.all.order('created_at DESC').page(params[:page]).per(4)
+      end
     end
   
     def destroy
-      #@user = User.find(params[:id])
       @user.destroy
        
       redirect_to admin_users_path
@@ -26,12 +19,23 @@ class Admin::UsersController < AdminController
   
     def edit 
     end
-  
+
     def update 
-      @user.update(user_params)
+      if @user.update(user_params)
+          redirect_to admin_users_path
+      else 
+        render 'edit'
+      end
+    end
+
+
+    def welcome
+    end
+
+    def user_post
+    end
   
-      redirect_to admin_users_path
-      
+    def show
     end
   
     
@@ -43,6 +47,6 @@ class Admin::UsersController < AdminController
     def user_params
       params.required(:user).permit(:name, :mobile_number, :role)
     end
-    
+  
   end
   

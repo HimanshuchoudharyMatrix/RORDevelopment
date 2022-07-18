@@ -21,7 +21,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'users#welcome'
-    
     resources :users
     resources :posts  do
       resources :comments
@@ -29,7 +28,7 @@ Rails.application.routes.draw do
     get '/users/:id/posts', to: 'users#user_post', as: 'user_post'
   end
 
-  get '/users/:id/posts', to: 'users#user_post', as: 'user_post' #custom routes
+  #get '/users/:id/posts', to: 'users#user_post', as: 'user_post' #custom routes
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
