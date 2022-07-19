@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     if current_user.present?
       @posts = Post.published.or(Post.unpublished.where(user_id: current_user.id)).order("id desc").page(params[:page]).per(3)
     end
+    authorize @posts
   end
 
   def show
@@ -15,12 +16,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-  
+    authorize @post  
   end
 
   def create
     @post = Post.new(post_params)
-    #@post.user = current_user
+    @post.user = current_user
+    authorize @post
    if @post.save
         redirect_to  posts_path
      else
@@ -33,7 +35,6 @@ class PostsController < ApplicationController
   end
 
   def update
-
     if @post.update(post_params)
       redirect_to posts_path
     else
@@ -42,9 +43,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-      @post.destroy
-      redirect_to posts_path
-   
+    @post.destroy
+    redirect_to posts_path
   end
 
   private
@@ -54,6 +54,6 @@ class PostsController < ApplicationController
 
   def required_post
     @post = Post.find(params[:id])
-   
+    authorize @post 
   end
 end

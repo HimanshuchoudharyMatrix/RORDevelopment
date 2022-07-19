@@ -12,6 +12,7 @@
                 <th scope ="col"> User Id</th>
                 <th scope="col">User Name</th>
                 <th scope="col">Role</th>
+                <th scope="col"> Email-id</th>
                 <% if current_user.present?%> 
                     <th scope="col">Action</th>
                 <%end%>
@@ -23,6 +24,7 @@
                     <td><%= u.id%></td>
                     <td><%= u.name %></td>
                     <td><%= u.role%></td>
+                    <td><%= u.email%></td>
                     <td><%= link_to "", "/admin/users/#{u.id}", class: "bi bi-eye-fill" %>
                             <% if current_user.role == "superadmin"%>
                                 <%= link_to "", "/admin/users/#{u.id}", method: "delete", data: {confirm: "are you sure ?"}, class: "bi bi-trash3-fill"%>

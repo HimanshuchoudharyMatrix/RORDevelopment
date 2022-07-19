@@ -11,9 +11,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   
   validates :email, uniqueness: true, presence: true
-  #validates :name, presence: true
+  validates :name, presence: true
  
-  #validates :mobile_number,   presence: true, numericality: true, length: { minimum: 10, maximum: 12  }
+  validates :mobile_number,   presence: true, numericality: true, length: { minimum: 10, maximum: 12  }
 
 
   belongs_to :role_user, optional: true
@@ -30,26 +30,24 @@ class User < ApplicationRecord
     where("email LIKE ? OR name LIKE ? ", "%#{search}%", "%#{search}%")
   end
 
+  # def self.from_omniauth(access_token)
+  #   data = access_token.info
+  #   user = User.where(email: data['email']).first
+  # end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+    end
+  end
+
   private
   def set_default_role
       self.role ||= :user
   end
 
-  def self.from_omniauth(auth)
-    user = User.find_by(email: auth.info.email)
-    if user
-      user.provider = auth.provider
-      user.id = auth.id
-      user.save
-    # else
-    #   user = User.where(provider: auth.provider, id: auth.id).first_or_create do |user|
-    #     user.email = auth.info.email
-    #     user.password = Devise.friendly_token[0,20]
-    #   end
-    end
-  end
-
-  # def self.from_omniauth(auth)
+# def self.from_omniauth(auth)
   #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
   #     user.email = auth.info.email
   #     user.password = Devise.friendly_token[0, 20]

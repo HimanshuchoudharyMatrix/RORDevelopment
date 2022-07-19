@@ -12,12 +12,11 @@ before_action :required_post, only: [:show, :edit, :update, :destroy]
 
   def new
     @post = Post.new
-  
+   
   end
 
   def create
     @post = Post.new(post_params)
-    #@post.user = current_user
    if @post.save
         redirect_to  admin_posts_path
      else
@@ -40,7 +39,6 @@ before_action :required_post, only: [:show, :edit, :update, :destroy]
   def destroy
       @post.destroy
       redirect_to admin_posts_path
-   
   end
 
   private
@@ -54,6 +52,5 @@ before_action :required_post, only: [:show, :edit, :update, :destroy]
 
   def required_post
     @post = Post.find(params[:id])
-   
   end
 end

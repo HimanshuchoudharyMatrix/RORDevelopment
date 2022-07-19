@@ -137,6 +137,13 @@ Devise.setup do |config|
   # ==> Configuration for :confirmable
 
   config.mailer_sender = 'superadmin@gmail.com'
+
+  config.omniauth :google_oauth2, 
+                  Rails.application.credentials.dig(:google_oauth_client_id),
+                  Rails.application.credentials.dig(:google_oauth_client_secret)
+  #ENV['GOOGLE_OAUTH_CLIENT_ID'], ENV['GOOGLE_OAUTH_CLIENT_SECRET']
+
+
   # A period that the user is allowed to access the website even without
   # confirming their account. For instance, if set to 2.days, the user will be
   # able to access the website for two days without confirming their account,
@@ -275,7 +282,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  config.omniauth :google_oauth2, '564247228374-7hnctcb8a6ou7r8604opuers6psf9epa.apps.googleusercontent.com', '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'
+ 
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

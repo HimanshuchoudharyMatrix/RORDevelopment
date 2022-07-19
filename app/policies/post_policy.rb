@@ -7,8 +7,11 @@ class PostPolicy < ApplicationPolicy
       user.present?
     end
    
+    def show?
+      true
+    end
     def update?
-      return true if user.present? && user == post.user
+     return true if user.present? && user == post.user
     end
    
     def destroy?
@@ -16,8 +19,7 @@ class PostPolicy < ApplicationPolicy
     end
    
     private
-   
-      def post
-        record
-      end
+    def post
+      @record
+    end
   end

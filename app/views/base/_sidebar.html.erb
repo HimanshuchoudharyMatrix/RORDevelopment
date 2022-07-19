@@ -1,22 +1,18 @@
 <aside class="main-sidebar">
   <section class="sidebar">
-    <div class="user-panel">
-            <span class= "logo-mini"><i class="fa fa-circle text-success"></i></span>
-            <span class="logo-lg"><b><%= link_to current_user.name, admin_user_path(current_user.id) %></b></span>
-    </div>
-
+    <span class= "logo-mini"><%= link_to "", admin_user_path(current_user.id), class: "bi bi-person-circle" %></span>
+    <span class="logo-lg"><b><%= link_to current_user.name, admin_user_path(current_user.id) %></b></span>
       <!--search form (Optional) ->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
+        <form action="#" method="get" class="sidebar-form">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
               <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
               </button>
             </span>
-        </div>
-      </form>
+          </div>
+        </form>
       <--/.search form -->
-
     <ul class="sidebar-menu sidebar" data-widget="tree">
       <li>
         <span class="logo-mini"><%= link_to "", admin_root_path, class:"bi bi-house-door-fill"%></span>
@@ -29,7 +25,6 @@
       <li><span class="logo-mini"><%= link_to "", admin_posts_path, class:"bi bi-postcard-fill"%></span>
         <span class="logo-lg"><%= link_to "Posts", admin_posts_path%></span>
       </li>
-     
     </ul>
   </section>
     <!-- /.sidebar -->

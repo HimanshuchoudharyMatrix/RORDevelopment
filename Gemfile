@@ -61,21 +61,21 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'pg'
+gem 'pg' #postgresql
 
-gem 'devise'
+gem 'devise' #it provide some outofthe box feature for login signup etc
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass' #for bootstrap
 
-gem 'paperclip'
+gem 'paperclip' #for image
 
-gem 'jquery-rails'
+gem 'jquery-rails' #for jquery
 
 gem 'rails-ujs'
 
-gem 'kaminari'
+gem 'kaminari' #for pagination
 
-gem 'ckeditor'
+gem 'ckeditor' #text editor
 
 gem 'ckeditor_rails'
 
@@ -85,7 +85,9 @@ gem 'omniauth-google-oauth2'
 
 gem 'omniauth-rails_csrf_protection'
 
-gem 'font-awesome-rails'
+gem 'font-awesome-rails' #bootstrap font admin theme
 
 gem 'popper_js'
+
+gem 'pundit' #use for authorization
 
